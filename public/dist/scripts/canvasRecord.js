@@ -159,7 +159,7 @@
     // UI events handling
    
     btnStartRecording.onclick = function() {
-        window.alert("Recording clisked");
+        window.alert("Are you sure you want to start recording ?");
         btnStartRecording.disabled = true;
         console.log("Record button clicked");
 
@@ -171,7 +171,7 @@
             videoElement.muted = true;
             videoElement.controls = false;
 
-            // it is second parameter of the RecordRTC
+            // it is second parameter of the RecordRTC*/
             var audioConfig = {};
            /* if (!isRecordOnlyAudio) {
                 audioConfig.onAudioProcessStarted = function() {
