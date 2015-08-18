@@ -60,9 +60,10 @@
             type: video.blob.type,
             contents: video.dataURL
         };
-        
+
 
         files.uploadOnlyAudio = !video;
+        console.log("Unable to locate files");
 
         videoElement.src = '';
         videoElement.poster = '/ajax-loader.gif';
@@ -102,6 +103,7 @@
             progressBar.style.display = 'none';
         };
         request.open('POST', url);
+        console.log("string data:" + data);
         request.send(data);
     }
 
@@ -137,7 +139,7 @@
                     console.log("Obtained the files to post");
                     postFiles(audio, video);
                 });
-            
+
 
             // if record only audio (either wav or ogg)
             if (isRecordOnlyAudio) postFiles(audio);
@@ -155,9 +157,9 @@
             alert(JSON.stringify(error));
         });
     }
-    
+
     // UI events handling
-   
+
     btnStartRecording.onclick = function() {
         window.alert("Are you sure you want to start recording ?");
         btnStartRecording.disabled = true;
@@ -181,16 +183,16 @@
                     videoRecorder.startRecording();
                 };
             }*/
-            
+
             // enable stop-recording button
             btnStopRecording.disabled = false;
-            
+
             audioRecorder = RecordRTC(stream, audioConfig);
             audioRecorder.startRecording();
             videoRecorder.startRecording();
 
 
-            
+
         });
     };
 
@@ -209,12 +211,11 @@
                     onStopRecording();
                 });
         });
-        
-    };
-    
 
-    
+    };
+
+
+
     window.onbeforeunload = function() {
         startRecording.disabled = false;
     };
-    
